@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title> Gas Station Locator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="header">
+    <img src="image/logo.png" alt="logo" />
+    <h1>Gas Station Locator</h1>
+  </div>
+  <div class="filter-container">
+    <input type="text" placeholder="Filter Result" size="20" autocomplete="on" data-bind="value: searchTxt, valueUpdate: 'afterkeydown'">
+  </div>
+  <div class="noresponse"></div>
+  <div class="map-list">
+    <ul class="menu-container" data-bind="foreach: filteredSearch()">
+      <li class="menu-list-item" data-bind="text: $data,event:{mouseover: $parent.overVenueItem.bind($data, $index()),mouseout: $parent.outVenueItem.bind($data, $index()),click:$parent.clickVenueItem.bind($data,$index())}">
+      </li>
+    </ul>
+    <div class="city-container">
+      <input class="text-box" id="location" type="text" value="Delhi, India">
+      <button class="my-button" id="search-me" type="submit">
+        <img class="search-img" src="image/mybutton.PNG" alt="search" />
+      </button>
+    </div>
+    <div id="my-map"></div>
+  </div>
+
+  <script src="js/knockout-3.4.1.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/myapp.js"></script>
+  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD13NV0ltKiQxv7CQuXFJEamPU9dXwFBlY&libraries=places&callback=initMap"></script>
+</body>
+
+</html>
