@@ -117,7 +117,7 @@ var initialization = {
                 }(marker, display));
 
             }).fail(function() {
-		            alert("Error Occured while loading Foursquare API. Try again, later");
+		 	alert("Error Occured while loading Foursquare API. Try again, later");
 	             });
         },
 
