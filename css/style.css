@@ -4,32 +4,38 @@ body {
     background-size: cover;
     overflow-y: hidden;
 }
+
 .header img {
     float: left;
     width: 60px;
     height: 60px;
     margin-top: 12px;
 }
+
 .header h1 {
     position: relative;
     top: 18px;
     left: 10px;
     color: #fff
 }
+
 .map-list {
     display: flex;
     margin: 10px;
     height: 100%;
     width: 100%;
 }
+
 .filter-container {
     margin: 50px 0 0 42px;
 }
+
 .menu-container {
     width: 22%;
     height: 500px;
     overflow: auto;
 }
+
 .menu-list-item {
     margin: 0 0 13px 0;
     list-style: none;
@@ -38,24 +44,29 @@ body {
     font-weight: 800;
     cursor: pointer;
 }
+
 .city-container {
     position: fixed;
     top: 4vh;
     right: 1vw;
     display: inline-flex;
 }
+
 .text-box {
     height: 27px;
     width: 150px;
 }
+
 .my-button {
     border: 0;
     background: transparent;
 }
+
 .search-img {
     width: 220px;
     height: 32px;
 }
+
 #my-map {
     border: 10px solid #fff;
     border-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50'><defs><linearGradient id='redgradient'><stop offset='0' stop-color='%23FFC14D'/><stop offset='0.362' stop-color='%23FF4834'/><stop offset='1' stop-color='%233B0300'/></linearGradient></defs><g id='Layer_1'><path d='M0,0 L50,0 L50,50 L0,50 L0,0 z' fill='url(%23redgradient)' width='100%' height='100%'/></g></svg>") 10% stretch;
@@ -63,64 +74,74 @@ body {
     height: 60vh;
     margin: 4em auto;
 }
+
 .gas-station {
     color: #3c33ff;
     font-size: 18px;
     font-weight: 700;
 }
+
 .address {
     margin: 5px 0;
 }
+
 .gasdealer-detail {
     font-weight: 600;
     color: #ff8033;
     font-size: 14px;
 }
-.noresponse {
-    color: #8b0000;
-    font-size: 16px;
-    font-weight: 700;
-}
+
 .foursquare-detail {
     color: #2A9F10;
     font-weight: 400;
 }
+
 .category {
     margin-top: 5px;
 }
+
 @media only screen and (max-width: 550px) {
     .header img {
         width: 8vw;
         height: 8vh;
     }
+
     .header h1 {
         font-size: 1em;
     }
+
     .city-container {
         width: 43vw;
         top: 2vh;
         right: 1vw;
         display: inline-block;
     }
+
     .search-img {
         width: 40vw;
         height: 4vh;
     }
+
     .text-box {
         height: 3vh;
         width: 38vw;
     }
+
     .menu-container {
         padding: 0;
     }
+
     .menu-list-item {
         font-size: 16px;
     }
+
     .map-list {
         margin-top: 4vh;
     }
+
     .filter-container {
         margin-top: 10vh;
         margin-left: 0vw;
     }
+
 }

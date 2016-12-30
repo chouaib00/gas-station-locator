@@ -9,17 +9,16 @@
 </head>
 
 <body>
-  <div class="header">
-    <img src="image/logo.png" alt="logo" />
+  <header>
+    <img src="image/logo.png" alt="logo">
     <h1>Gas Station Locator</h1>
-  </div>
-  <div class="filter-container">
+  </header>
+  <section class="filter-container">
     <input type="text" placeholder="Filter Result" size="20" autocomplete="on" data-bind="value: searchTxt, valueUpdate: 'afterkeydown'">
-  </div>
-  <div class="noresponse"></div>
+  </section>
   <div class="map-list">
     <ul class="menu-container" data-bind="foreach: filteredSearch()">
-      <li class="menu-list-item" data-bind="text: $data,event:{mouseover: $parent.overVenueItem.bind($data, $index()),mouseout: $parent.outVenueItem.bind($data, $index()),click:$parent.clickVenueItem.bind($data,$index())}">
+      <li class="menu-list-item" data-bind="text: $data,event:{click:$parent.clickVenueItem.bind($data,$index())}">
       </li>
     </ul>
     <div class="city-container">
@@ -34,7 +33,8 @@
   <script src="js/knockout-3.4.1.js"></script>
   <script src="js/jquery.min.js"></script>
   <script src="js/myapp.js"></script>
-  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD13NV0ltKiQxv7CQuXFJEamPU9dXwFBlY&libraries=places&callback=initMap"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD13NV0ltKiQxv7CQuXFJEamPU9dXwFBlY&libraries=places&callback=initMap"
+  async defer onerror="mapError()"></script>
 </body>
 
 </html>

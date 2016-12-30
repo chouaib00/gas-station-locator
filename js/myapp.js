@@ -1,6 +1,5 @@
 var initialization = {
-        location:
-				{
+        location: {
             lat: 28.7041,
             lng: 77.1048973
         },
@@ -11,7 +10,7 @@ var initialization = {
     infoWindow,
     marker, markers = [],
     venueClick = {},
-		foursquareuri = '',
+    foursquareuri = '',
     display = '',
     venueFilter = [],
     vMarkerPos;
@@ -20,7 +19,7 @@ var viewModel = function() {
     //scope alias
     var self = this;
     var geocoder = new google.maps.Geocoder();
-		document.getElementById('search-me').addEventListener('click', function() {
+    document.getElementById('search-me').addEventListener('click', function() {
         self.geoAddr(geocoder, map);
     });
     self.geoAddr = function(geocoder, resultsMap) {
@@ -56,7 +55,7 @@ var viewModel = function() {
                     self.pushVenue(result[i]);
                     self.createMarker(result[i]);
                 }
-            }
+            } else alert("Places request failed, status=" + status)
         },
         self.pushVenue = function(place) {
             self.placesArray.push(place.name);
@@ -111,14 +110,15 @@ var viewModel = function() {
                         marker.setAnimation(google.maps.Animation.BOUNCE);
                         setTimeout(function() {
                             marker.setAnimation(null);
-                        }, 1200);
+                        }, 1400);
                         infoWindow.setContent(display);
                         infoWindow.open(map, this);
                     };
                 }(marker, display));
 
-            }).error(function(e) {
-                document.getElementsByClassName("noresponse").innerHTML = "<h2>Sorry, No Response from Foursquare.</h2>"
+            }).fail(function(objk, fsquareStatus, error) {
+                var noresponse = error + fsquareStatus;
+                console.log(noresponse + " : Foursquare not responding");
             });
         },
 
@@ -165,31 +165,21 @@ var viewModel = function() {
                 });
             }
         },
-        self.overVenueItem = function(index) {
+        self.clickVenueItem = function(index) {
             venueClick = self.markerArray()[index];
             if (venueClick.getAnimation() !== null) {
                 venueClick.setAnimation(null);
             } else {
                 venueClick.setAnimation(google.maps.Animation.BOUNCE);
+                infoWindow.setContent(venueClick.displayProp);
+                infoWindow.open(map, venueClick);
+                setTimeout(function() {
+                    venueClick.setAnimation(null);
+                }, 2000);
             }
         },
-        self.outVenueItem = function(index) {
-            venueClick.setAnimation(null);
-        },
-        self.clickVenueItem = function(index) {
-            venueClick = self.markerArray()[index];
 
-            infoWindow.setContent(venueClick.displayProp);
-            infoWindow.open(map, venueClick);
-
-
-            venueClick.setAnimation(google.maps.Animation.BOUNCE);
-            setTimeout(function() {
-                venueClick.setAnimation(null);
-            }, 750);
-        };
-
-    google.maps.event.addDomListener(window, 'load', self.runQuery(map));
+        google.maps.event.addDomListener(window, 'load', self.runQuery(map));
 };
 
 function initMap() {
@@ -207,4 +197,10 @@ function initMap() {
         map.setCenter(center);
     });
     ko.applyBindings(new viewModel());
+}
+
+// error handling function for google map
+function mapError() {
+    "use strict";
+    document.getElementById('my-map').innerHTML = "<span class='map-error'>Error Ocuured. Please try again later</span>";
 }
