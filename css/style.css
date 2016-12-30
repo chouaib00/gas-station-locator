@@ -5,14 +5,14 @@ body {
     overflow-y: hidden;
 }
 
-.header img {
+header img {
     float: left;
     width: 60px;
     height: 60px;
     margin-top: 12px;
 }
 
-.header h1 {
+header h1 {
     position: relative;
     top: 18px;
     left: 10px;
@@ -98,6 +98,12 @@ body {
 
 .category {
     margin-top: 5px;
+}
+
+.map-error {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1em;
 }
 
 @media only screen and (max-width: 550px) {
