@@ -15,13 +15,13 @@ var initialization = {
     venueFilter = [],
     vMarkerPos;
 
-var viewModel = function() {
+    var viewModel = function() {
     //scope alias
     var self = this;
     var geocoder = new google.maps.Geocoder();
-    document.getElementById('search-me').addEventListener('click', function() {
-        self.geoAddr(geocoder, map);
-    });
+    this.searchMe = function() {
+      self.geoAddr(geocoder, map);
+  }
     self.geoAddr = function(geocoder, resultsMap) {
             var address = document.getElementById('location').value;
             geocoder.geocode({
