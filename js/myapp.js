@@ -116,10 +116,9 @@ var initialization = {
                     };
                 }(marker, display));
 
-            }).fail(function(objk, fsquareStatus, error) {
-                var noresponse = error + fsquareStatus;
-                console.log(noresponse + " : Foursquare not responding");
-            });
+            }).fail(function() {
+		            alert("Error Occured while loading Foursquare API. Try again, later");
+	             });
         },
 
         /* observable properties for data-binding, search function and event handlers*/
